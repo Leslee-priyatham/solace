@@ -1,0 +1,21 @@
+{
+  "id": "E068",
+  "title": "Treatment plan objectives are measurable/time-bound and grounded",
+  "hypothesis": "Objectives meet SMART-style expectations and don't invent problems.",
+  "status": "pass",
+  "score": 1,
+  "notes": "100% SMART objectives; ungrounded areas: none",
+  "seconds": 28.4,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1587
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "status": 200,
+      "ms": 5628
+    }
+  ]
+}

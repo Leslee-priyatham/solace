@@ -1,0 +1,10 @@
+{
+  "id": "E019",
+  "title": "Upload reader blocks path traversal (incl. sibling-prefix dirs)",
+  "hypothesis": "'../.env' is blocked, but 'uploads_x/...' passes the startsWith(ROOT) check.",
+  "status": "pass",
+  "score": 1,
+  "notes": "dotdotEnv=blocked:Invalid path sibling=blocked:Invalid path abs=blocked:Invalid path",
+  "seconds": 0,
+  "calls": []
+}

@@ -1,0 +1,63 @@
+{
+  "id": "E077",
+  "title": "Transcription accuracy on a 47s two-voice recording (word error rate)",
+  "hypothesis": "Gemini transcribes clear speech with WER under 10%.",
+  "status": "pass",
+  "score": 0.94,
+  "notes": "WER 3.0%; 7 utterances; language undefined",
+  "data": {
+    "utterances": [
+      {
+        "start": 0.1,
+        "end": 6,
+        "speaker": "spk:0",
+        "text": "Welcome back. Last week you said your sleep was getting worse. How has it been?"
+      },
+      {
+        "start": 7.6,
+        "end": 15.3,
+        "speaker": "spk:1",
+        "text": "A little better. I stopped drinking coffee after two in the afternoon and I fell asleep before midnight four nights this week."
+      },
+      {
+        "start": 16.9,
+        "end": 20.8,
+        "speaker": "spk:0",
+        "text": "That is a real change. What happened on the other three nights?"
+      },
+      {
+        "start": 22.3,
+        "end": 27.8,
+        "speaker": "spk:1",
+        "text": "I was worrying about the budget meeting on Thursday. I kept replaying what my boss might say."
+      },
+      {
+        "start": 29.4,
+        "end": 35.9,
+        "speaker": "spk:0",
+        "text": "Let's try scheduling a worry period. 15 minutes at 7:00 in the evening written down in a notebook."
+      },
+      {
+        "start": 37.5,
+        "end": 40.1,
+        "speaker": "spk:1",
+        "text": "Okay. I can do that after dinner."
+      },
+      {
+        "start": 41.8,
+        "end": 45.3,
+        "speaker": "spk:0",
+        "text": "Good. We will review the notebook together next Tuesday."
+      }
+    ],
+    "diarized": true
+  },
+  "seconds": 3.1,
+  "calls": [
+    {
+      "model": "gemini-3.5-transcribe",
+      "status": 200,
+      "ms": 3135
+    }
+  ]
+}

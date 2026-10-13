@@ -1,0 +1,9 @@
+{
+  "id": "E005",
+  "title": "Invalid API key produces a clear, bounded error",
+  "hypothesis": "A wrong key yields a readable AiRequestError, not a crash or hang.",
+  "status": "pass",
+  "score": 1,
+  "notes": "AiRequestError: Google Gemini returned 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key not valid. Please pass a valid API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\"",
+  "seconds": 0.1
+}

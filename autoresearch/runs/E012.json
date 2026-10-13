@@ -1,0 +1,10 @@
+{
+  "id": "E012",
+  "title": "textToHtml escapes model output (no HTML injection) and renders bullets",
+  "hypothesis": "AI note text is escaped before it is stored as HTML.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"noScript\":true,\"noImg\":true,\"bullets\":true,\"quotes\":true} → <p>Para with &lt;script&gt;alert(1)&lt;/script&gt; &amp; &lt;img src=x onerror=alert(1)&gt;</p><ul><li>one</li><li>two &quot;q&quot;</li></ul>",
+  "seconds": 0,
+  "calls": []
+}

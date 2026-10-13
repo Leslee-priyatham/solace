@@ -1,0 +1,10 @@
+{
+  "id": "E009",
+  "title": "parseJsonLoose handles common model output shapes",
+  "hypothesis": "Fenced, prose-wrapped and trailing-text JSON all parse.",
+  "status": "pass",
+  "score": 0.875,
+  "notes": "plain=ok fenced=ok fencedNoLang=ok prose=ok array=ok nestedBraceInString=ok trailingFenceText=ok twoObjects=throws",
+  "seconds": 0,
+  "calls": []
+}

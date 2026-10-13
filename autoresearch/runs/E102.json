@@ -1,0 +1,10 @@
+{
+  "id": "E102",
+  "title": "Daily-quota 429 fails fast (no pointless retries) with a human message",
+  "hypothesis": "One attempt; message says the quota is used up and when it resets; no raw JSON.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"failed\":true,\"oneAttempt\":true,\"human\":true,\"resetHint\":true,\"settingsLink\":true,\"noJson\":true} — \"Google Gemini: the usage quota for this model is used up (resets in about 10 h). Choose another model in Settings → AI providers, or add billing to your API key. (429)\"",
+  "seconds": 0.1,
+  "calls": []
+}

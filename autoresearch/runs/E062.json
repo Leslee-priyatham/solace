@@ -1,0 +1,21 @@
+{
+  "id": "E062",
+  "title": "Edit with Assistant changes only the targeted section",
+  "hypothesis": "'Keep other sections word-for-word' is respected.",
+  "status": "pass",
+  "score": 1,
+  "notes": "3/3 other sections unchanged; edit applied=true; escaped-HTML leak=false",
+  "seconds": 13.3,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1865
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 868
+    }
+  ]
+}

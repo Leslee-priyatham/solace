@@ -1,0 +1,10 @@
+{
+  "id": "E027",
+  "title": "Global search finds the client and survives hostile input",
+  "hypothesis": "Search returns the demo client and handles SQL-ish / wildcard input without error.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"finds\":true,\"caseInsensitive\":true,\"sqliSafe\":true,\"wildcardLiteral\":true}; '%' returned 10 items",
+  "seconds": 0.1,
+  "calls": []
+}

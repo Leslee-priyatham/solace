@@ -1,0 +1,21 @@
+{
+  "id": "E072",
+  "title": "Compliance result covers every criterion exactly once",
+  "hypothesis": "One item per criterion with matching ids, so the UI can show each row.",
+  "status": "pass",
+  "score": 1,
+  "notes": "Standard psychotherapy documentation: 9/9 ids match | Telehealth add-on: 4/4 ids match",
+  "seconds": 7.2,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 956
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1130
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "E084",
+  "title": "Write-mode session with the app's CURRENT settings: what the clinician sees",
+  "hypothesis": "With the configured model over quota/overloaded, the session fails fast with a readable error (not stuck 'Generating').",
+  "status": "pass",
+  "score": 1,
+  "notes": "READY after 12s; error shown: ",
+  "seconds": 12.3,
+  "calls": []
+}

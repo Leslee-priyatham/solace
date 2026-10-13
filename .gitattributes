@@ -1,0 +1,11 @@
+# Store text with LF line endings in the repository whatever the uploader's OS.
+* text=auto eol=lf
+# Windows batch files need Windows line endings; the Mac launcher must keep LF.
+*.bat text eol=crlf
+*.command text eol=lf
+
+*.png binary
+*.svg text
+*.ico binary
+*.wav binary
+*.db binary

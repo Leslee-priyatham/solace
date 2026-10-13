@@ -1,0 +1,31 @@
+{
+  "id": "E114",
+  "title": "Editing one section keeps the clinician's formatting in the other sections",
+  "hypothesis": "Untouched sections keep their original HTML (bold, headings) instead of being rebuilt from plain text.",
+  "status": "pass",
+  "score": 1,
+  "notes": "formatted section preserved=true; middle sections byte-identical=true; declined=0",
+  "seconds": 56.7,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 429,
+      "ms": 930
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1650
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 978
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1105
+    }
+  ]
+}

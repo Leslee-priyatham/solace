@@ -1,0 +1,44 @@
+{
+  "id": "E038",
+  "title": "GIRP note from F1: every section written + planted facts recalled",
+  "hypothesis": "The GIRP template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "4 sections, 0 missing; recall 100% (missing: none); 1506 chars; 6.2s",
+  "data": {
+    "sections": [
+      {
+        "id": "goals",
+        "title": "Goals",
+        "html": "<p>Treatment-plan goals addressed this session include reducing panic symptoms (F41.0 Panic disorder) and managing catastrophic cognitions related to panic attacks through Cognitive Behavioral Therapy.</p>"
+      },
+      {
+        "id": "intervention",
+        "title": "Intervention",
+        "html": "<ul><li>Reviewed completed thought records from the past week.</li><li>Conducted in-session interoceptive exposure (spinning in chair for thirty seconds) to address somatic triggers of dizziness.</li><li>Utilized CBT scaling to rate anxiety levels during and after exposure.</li><li>Discussed medication updates (sertraline 50 mg) and conducted a routine safety check.</li></ul>"
+      },
+      {
+        "id": "response",
+        "title": "Response",
+        "html": "<p>Client reported a rough week with a panic attack at the grocery store on Tuesday, triggered by the thought of passing out in front of others (rated 90% in the moment, decreasing to 40% later at home). Client completed two of three assigned thought records. Client participated in interoceptive exposure; initial anxiety peaked at 6 and decreased to 3 within two minutes, recognizing that physiological sensations peak and pass. Client denied any thoughts of self-harm. Sleep was reported as poor (approximately four hours per night, waking at 3:00 AM). Client reported starting sertraline 50 mg two weeks ago with mild initial nausea that has since resolved.</p>"
+      },
+      {
+        "id": "plan",
+        "title": "Plan",
+        "html": "<ul><li>Complete thought records three times this week.</li><li>Practice the interoceptive spinning exercise once daily at home.</li><li>Visit the grocery store on a quiet Saturday morning and remain until anxiety decreases by half.</li><li>Attend individual therapy session next week at the scheduled time.</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 1,
+      "missing": []
+    }
+  },
+  "seconds": 6.2,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 2709
+    }
+  ]
+}

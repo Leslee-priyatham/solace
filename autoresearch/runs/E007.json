@@ -1,0 +1,9 @@
+{
+  "id": "E007",
+  "title": "Unconfigured purpose raises AiNotConfiguredError",
+  "hypothesis": "Missing provider assignment yields the friendly 'set up a provider' message.",
+  "status": "pass",
+  "score": 1,
+  "notes": "AiNotConfiguredError: No transcription provider is set up yet. Add one in Settings → AI providers.",
+  "seconds": 0
+}

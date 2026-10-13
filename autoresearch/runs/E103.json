@@ -1,0 +1,10 @@
+{
+  "id": "E103",
+  "title": "Error messages for common provider failures are short and readable",
+  "hypothesis": "503, bad key, unknown model and timeouts all map to plain sentences without JSON.",
+  "status": "pass",
+  "score": 1,
+  "notes": "overloaded: \"Google Gemini is temporarily overloaded or unavailable. Please try again in a few minutes. (503)\" | badKey: \"Google Gemini rejected the API key. Check it in Settings → AI providers. (400: API key not valid. Please pass a valid API key.)\" | noModel: \"Google Gemini couldn't find that model. Choose another in Settings → AI providers. (404: models/gemini-9 is not found)\" | timeout: \"Google Gemini didn't respond in time. Please try again. (No response after 60s.)\"",
+  "seconds": 0,
+  "calls": []
+}

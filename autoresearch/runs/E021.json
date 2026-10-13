@@ -1,0 +1,10 @@
+{
+  "id": "E021",
+  "title": "Forged / expired / alg:none session tokens are rejected",
+  "hypothesis": "JWT verification rejects tokens not signed with APP_SECRET.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"forged\":401,\"expired\":401,\"none\":401,\"valid\":200}",
+  "seconds": 0.2,
+  "calls": []
+}

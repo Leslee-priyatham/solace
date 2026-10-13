@@ -1,0 +1,10 @@
+{
+  "id": "E030",
+  "title": "Middleware public-prefix matching is exact",
+  "hypothesis": "Paths that merely start with a public prefix (e.g. /bookkeeping, /portalx) are still treated as private.",
+  "status": "pass",
+  "score": 1,
+  "notes": "/bookkeeping=307 /portalx=307 /joinus=307 /loginx=307 /api/publicity=401 (404 = middleware let it through as public)",
+  "seconds": 0.1,
+  "calls": []
+}

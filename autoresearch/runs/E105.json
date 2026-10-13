@@ -1,0 +1,10 @@
+{
+  "id": "E105",
+  "title": "Dedicated transcribe model: request uses audioTranscriptionConfig; turns/timestamps parsed",
+  "hypothesis": "For *-transcribe models the app sends diarization config (no JSON mode) and maps parts to speaker turns.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"usesConfig\":true,\"noJsonMode\":true,\"noPrompt\":true,\"turns\":true,\"speakers\":true,\"times\":true}",
+  "seconds": 0,
+  "calls": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "E055",
+  "title": "Note preferences honoured: client called 'Maya', clinician 'Clinician', pronouns she/her",
+  "hypothesis": "clientTerm/providerTerm/pronouns from settings appear in the note.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"usesMaya\":true,\"usesClinician\":true,\"noTherapist\":true,\"noClientTerm\":true}",
+  "seconds": 10,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1381
+    }
+  ]
+}

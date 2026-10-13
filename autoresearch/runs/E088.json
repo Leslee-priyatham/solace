@@ -1,0 +1,10 @@
+{
+  "id": "E088",
+  "title": "Session status endpoint: known id returns status+documents, unknown id 404",
+  "hypothesis": "The polling endpoint the session page relies on behaves.",
+  "status": "pass",
+  "score": 1,
+  "notes": "known→200 {\"status\":\"READY\",\"error\":null,\"documents\":[{\"id\":\"cmv4lf60g001jtdkca2beybjb\",\"status\":\"DRAFT\"}]}; unknown→404",
+  "seconds": 0,
+  "calls": []
+}

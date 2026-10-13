@@ -1,0 +1,10 @@
+{
+  "id": "E016",
+  "title": "Form validation enforces required fields and consent",
+  "hypothesis": "Missing required answers and a 'No' consent are rejected; headings ignored.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"missingName\":true,\"consentNo\":true,\"emptyMulti\":true,\"whitespaceName\":true,\"valid\":true}",
+  "seconds": 0,
+  "calls": []
+}

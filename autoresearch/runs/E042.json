@@ -1,0 +1,76 @@
+{
+  "id": "E042",
+  "title": "Intake assessment note from F1: every section written + planted facts recalled",
+  "hypothesis": "The Intake assessment template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "10 sections, 0 missing; recall 89% (missing: suds_6_to_3); 3775 chars; 10.8s",
+  "data": {
+    "sections": [
+      {
+        "id": "reason",
+        "title": "Reason for referral",
+        "html": "<p>The client presented for an individual therapy session reporting a rough week characterized by a panic attack at the grocery store. The client was referred for treatment, though the specific referral source was not discussed this session.</p><p>The client's presenting problem in their own words is that they &quot;just want the panic to stop.&quot;</p>"
+      },
+      {
+        "id": "history",
+        "title": "History of presenting problem",
+        "html": "<p>The onset, duration, severity, and triggers of the presenting problem were partially discussed in the context of a recent panic attack at the grocery store checkout line, where the client experienced a pounding heart, feared passing out in front of others, and left the cart to walk out. The client noted that sister Dana's advice to &quot;just push through it&quot; has not been helpful.</p>"
+      },
+      {
+        "id": "psych",
+        "title": "Psychiatric and treatment history",
+        "html": "<p>Prior diagnoses, therapy history, and past hospitalisations were not assessed this session. Regarding medications, the client reported that their primary care doctor started them on sertraline 50 mg approximately two weeks ago, with initial nausea that has since resolved.</p>"
+      },
+      {
+        "id": "medical",
+        "title": "Medical history",
+        "html": "<p>Relevant medical conditions were not assessed this session, aside from the prescription of sertraline 50 mg by a primary care doctor. Sleep has been poor, with the client reporting about four hours of sleep per night and waking up around 3:00 AM. Appetite was not assessed this session.</p>"
+      },
+      {
+        "id": "substance",
+        "title": "Substance use",
+        "html": "<p>Substance use (alcohol, drugs, and other substances: pattern and impact) was not assessed this session.</p>"
+      },
+      {
+        "id": "social",
+        "title": "Social and family history",
+        "html": "<p>Family of origin, culture, work or school, legal, and housing details were not assessed this session. Regarding relationships and supports, the client mentioned a sister named Dana, whose attempts to be helpful (&quot;just push through it&quot;) are perceived as unhelpful and dismissive.</p>"
+      },
+      {
+        "id": "mse",
+        "title": "Mental status exam",
+        "html": "<ul><li>Appearance: Not assessed this session.</li><li>Behaviour: Cooperative with therapeutic interventions; engaged in in-session interoceptive exposure.</li><li>Speech: Not assessed this session.</li><li>Mood: Anxious, distressed by panic symptoms.</li><li>Affect: Congruent with mood and topic discussed.</li><li>Thought process and content: Logical and coherent; content notable for fear of passing out during panic attacks and appearing &quot;crazy&quot; to others.</li><li>Perception: No perceptual disturbances reported.</li><li>Cognition: Intact; able to reflect on belief ratings and cognitive shifts (dropping from 90% to 40%).</li><li>Insight and judgement: Fair insight into anxiety triggers and cognitive distortions; good judgment in attending therapy and participating in exposure tasks.</li></ul>"
+      },
+      {
+        "id": "risk",
+        "title": "Risk assessment",
+        "html": "<p>The client denied any thoughts of hurting themselves or of not wanting to be alive, explicitly stating, &quot;No, nothing like that. I just want the panic to stop.&quot; Homicidal ideation, self-harm, and protective factors were not formally assessed beyond the denial of suicidal ideation. The overall risk level appears low based on current client statements.</p>"
+      },
+      {
+        "id": "diagnosis",
+        "title": "Diagnostic impressions",
+        "html": "<p>Working diagnosis: F41.0 Panic disorder. This is supported by the client's recurrent unexpected panic attacks (such as the event at the grocery store checkout), associated fear of future attacks, and catastrophic cognitions regarding physical symptoms (fear of passing out and appearing crazy).</p>"
+      },
+      {
+        "id": "plan",
+        "title": "Recommendations and plan",
+        "html": "<ul><li>Recommended level of care: Outpatient individual psychotherapy.</li><li>Frequency: Weekly individual sessions.</li><li>Modality: Cognitive Behavioral Therapy (CBT), including thought records and interoceptive exposure.</li><li>Initial goals: Complete thought records three times per week, practise the spinning interoceptive exposure exercise once daily at home, and conduct an in-vivo exposure by returning to the grocery store on a quiet morning and staying until anxiety decreases by half.</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 0.8888888888888888,
+      "missing": [
+        "suds_6_to_3"
+      ]
+    }
+  },
+  "seconds": 10.8,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1431
+    }
+  ]
+}

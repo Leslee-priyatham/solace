@@ -1,0 +1,89 @@
+{
+  "id": "E025",
+  "title": "Page sweep: forms, compliance, reports, inbox, telehealth",
+  "hypothesis": "The remaining staff screens render.",
+  "status": "pass",
+  "score": 1,
+  "notes": "11/11 OK; slowest 54ms",
+  "data": [
+    {
+      "p": "/forms",
+      "status": 200,
+      "ms": 50,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/forms/library",
+      "status": 200,
+      "ms": 39,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/forms/packets",
+      "status": 200,
+      "ms": 33,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/forms/requests",
+      "status": 200,
+      "ms": 44,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/forms/convert",
+      "status": 200,
+      "ms": 35,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/forms/cmv4lf5g4000ntdkcgilwuk6l",
+      "status": 200,
+      "ms": 36,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/compliance",
+      "status": 200,
+      "ms": 54,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/reports",
+      "status": 200,
+      "ms": 49,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/inbox",
+      "status": 200,
+      "ms": 46,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/telehealth",
+      "status": 200,
+      "ms": 33,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/telehealth/room",
+      "status": 200,
+      "ms": 31,
+      "ok": true,
+      "redirect": null
+    }
+  ],
+  "seconds": 0.5,
+  "calls": []
+}

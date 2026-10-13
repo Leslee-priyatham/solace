@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #ecfdf8;
+  --color-brand-100: #d0f8ec;
+  --color-brand-200: #a4efda;
+  --color-brand-300: #6ce0c4;
+  --color-brand-400: #34c8a9;
+  --color-brand-500: #13ad90;
+  --color-brand-600: #0a8c76;
+  --color-brand-700: #0b7061;
+  --color-brand-800: #0d594e;
+  --color-brand-900: #0e4a42;
+
+  --color-sidebar: #10211f;
+  --color-sidebar-hover: #1a322f;
+  --color-sidebar-active: #234540;
+
+  --color-ink: #17201f;
+  --color-muted: #5d6b69;
+  --color-line: #e3e8e7;
+  --color-canvas: #f6f8f8;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+/* Rendered clinical note / rich text */
+.prose-note {
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+.prose-note p {
+  margin: 0 0 0.6rem;
+}
+.prose-note p:last-child {
+  margin-bottom: 0;
+}
+.prose-note ul,
+.prose-note ol {
+  margin: 0 0 0.6rem 1.25rem;
+}
+.prose-note ul {
+  list-style: disc;
+}
+.prose-note ol {
+  list-style: decimal;
+}
+.prose-note li {
+  margin: 0.15rem 0;
+}
+.prose-note h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+}
+.prose-note h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.3rem;
+}
+.prose-note strong {
+  font-weight: 600;
+}
+
+/* TipTap editor */
+.tiptap {
+  outline: none;
+  min-height: 2.5rem;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9aa6a4;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "E040",
+  "title": "EMDR progress note note from F1: every section written + planted facts recalled",
+  "hypothesis": "The EMDR progress note template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "5 sections, 0 missing; recall 33% (missing: thought_record_2of3,belief_90_40,sleep_4h,sertraline_50,denies_si,suds_6_to_3); 353 chars; 2.4s",
+  "data": {
+    "sections": [
+      {
+        "id": "phase",
+        "title": "Phase and target",
+        "html": "<p>Not assessed this session.</p>"
+      },
+      {
+        "id": "ratings",
+        "title": "SUD and VOC",
+        "html": "<p>Not assessed this session.</p>"
+      },
+      {
+        "id": "processing",
+        "title": "Processing",
+        "html": "<p>Not assessed this session.</p>"
+      },
+      {
+        "id": "closure",
+        "title": "Closure and stabilization",
+        "html": "<p>Not assessed this session.</p>"
+      },
+      {
+        "id": "plan",
+        "title": "Plan",
+        "html": "<ul><li>Complete thought records three times</li><li>Practise the spinning exercise once a day at home</li><li>Return to the grocery store on a quiet morning and stay until anxiety drops by half</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 0.3333333333333333,
+      "missing": [
+        "thought_record_2of3",
+        "belief_90_40",
+        "sleep_4h",
+        "sertraline_50",
+        "denies_si",
+        "suds_6_to_3"
+      ]
+    }
+  },
+  "seconds": 2.4,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 961
+    }
+  ]
+}

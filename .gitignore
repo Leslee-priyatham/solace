@@ -1,0 +1,18 @@
+# Local-only material — never publish.
+# recon/: captures of a third-party product (its shipped code, screenshots, account pages with personal details).
+/recon/
+# Database snapshot taken before the experiments (password hash, encrypted API key).
+/autoresearch/backup/
+
+# Dependencies, builds, OS and editor files
+node_modules/
+.next/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Claude Code session tooling
+/.claude/

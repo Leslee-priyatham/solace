@@ -1,0 +1,10 @@
+{
+  "id": "E096",
+  "title": "Assistant handles a non-existent client id without crashing",
+  "hypothesis": "Unknown context degrades gracefully (200 + a reply or a clear message).",
+  "status": "pass",
+  "score": 1,
+  "notes": "200: The provided record is empty. Therefore, it does not contain any information to summarize this client. Please provide the client's clinical record, and I will g",
+  "seconds": 3.5,
+  "calls": []
+}

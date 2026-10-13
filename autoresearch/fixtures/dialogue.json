@@ -1,0 +1,30 @@
+﻿[
+    {
+        "text":  "Welcome back. Last week you said your sleep was getting worse. How has it been?",
+        "speaker":  "PROVIDER"
+    },
+    {
+        "text":  "A little better. I stopped drinking coffee after two in the afternoon, and I fell asleep before midnight four nights this week.",
+        "speaker":  "CLIENT"
+    },
+    {
+        "text":  "That is a real change. What happened on the other three nights?",
+        "speaker":  "PROVIDER"
+    },
+    {
+        "text":  "I was worrying about the budget meeting on Thursday. I kept replaying what my boss might say.",
+        "speaker":  "CLIENT"
+    },
+    {
+        "text":  "Let\u0027s try scheduling a worry period. Fifteen minutes at seven in the evening, written down in a notebook.",
+        "speaker":  "PROVIDER"
+    },
+    {
+        "text":  "Okay. I can do that after dinner.",
+        "speaker":  "CLIENT"
+    },
+    {
+        "text":  "Good. We will review the notebook together next Tuesday.",
+        "speaker":  "PROVIDER"
+    }
+]

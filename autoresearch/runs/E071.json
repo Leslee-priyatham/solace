@@ -1,0 +1,148 @@
+{
+  "id": "E071",
+  "title": "Compliance check: a solid AI note scores well; a poor note scores badly",
+  "hypothesis": "The checker discriminates — good SOAP ≥ 60, 'we talked' note ≤ 30.",
+  "status": "pass",
+  "score": 1,
+  "notes": "good note 78/100, poor note 6/100 (9 criteria); good fails: identity,signature",
+  "data": {
+    "good": {
+      "score": 78,
+      "summary": "The psychotherapy note meets most documentation standards, including detailed clinical descriptions, risk assessment, and interventions. However, it fails on session identifiers due to missing date, modality, and participant details, and lacks a clinician signature.",
+      "items": [
+        {
+          "criterionId": "identity",
+          "status": "fail",
+          "finding": "The note mentions a 50-minute individual CBT session, but the date, modality (in-inperson/telehealth), and specific participants are not documented.",
+          "suggestion": "Add the session date, whether it was in-person or telehealth, and list the participants (e.g., 'Date: 10/24/2023, Modality: In-person, Participants: Client and therapist')."
+        },
+        {
+          "criterionId": "medical_necessity",
+          "status": "pass",
+          "finding": "The note describes ongoing symptoms and functional impairment, such as panic attacks, avoidance behavior at the grocery store, poor sleep, and anxiety.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "diagnosis_link",
+          "status": "pass",
+          "finding": "Session content directly connects to the diagnosis of F41.0 Panic Disorder by addressing panic attacks, catastrophic thoughts of fainting, and interoceptive exposure.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "goals",
+          "status": "pass",
+          "finding": "The assessment references progress toward treatment goals through homework completion and engagement in CBT modalities.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "interventions",
+          "status": "pass",
+          "finding": "Specific interventions are documented, including 'interoceptive exposure exercise' (spinning in a chair) and reviewing thought records.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "response",
+          "status": "pass",
+          "finding": "The client's response is documented, noting anxiety levels decreased from 6/10 to 3/10 during exposure and belief ratings dropped from 90% to 40%.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "risk",
+          "status": "pass",
+          "finding": "Risk is explicitly assessed: 'When screened for safety, the Client denied any thoughts of self-harm or not wanting to be alive... Risk is evaluated as low.'",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "plan",
+          "status": "pass",
+          "finding": "The plan details next steps (completing thought records, spinning exercise, returning to the grocery store) and schedules the next session.",
+          "suggestion": ""
+        },
+        {
+          "criterionId": "signature",
+          "status": "fail",
+          "finding": "The note ends abruptly after the plan section without a rendering clinician signature or credentials.",
+          "suggestion": "Append the clinician's electronic signature, name, and credentials at the end of the note."
+        }
+      ]
+    },
+    "poor": {
+      "score": 6,
+      "summary": "The provided clinical note fails nearly all standard payer documentation criteria due to an extreme lack of detail. It misses essential session identifiers, medical necessity, clinical interventions, and measurable client responses.",
+      "items": [
+        {
+          "criterionId": "identity",
+          "status": "fail",
+          "finding": "The note lacks the date, duration or start/stop times, modality, and specific participants.",
+          "suggestion": "Include date, start and stop times, modality (e.g., in-person), and participants (e.g., individual client)."
+        },
+        {
+          "criterionId": "medical_necessity",
+          "status": "fail",
+          "finding": "No current symptoms or functional impairments are documented to justify continued treatment.",
+          "suggestion": "Document specific current symptoms and functional impacts necessitating psychotherapy."
+        },
+        {
+          "criterionId": "diagnosis_link",
+          "status": "fail",
+          "finding": "The session content ('We talked') does not connect to the client's diagnosis.",
+          "suggestion": "Explicitly link session content to symptoms of the client's specific diagnosis."
+        },
+        {
+          "criterionId": "goals",
+          "status": "fail",
+          "finding": "There is no reference to treatment plan goals or objectives.",
+          "suggestion": "Reference specific treatment plan goals addressed during the session."
+        },
+        {
+          "criterionId": "interventions",
+          "status": "fail",
+          "finding": "No specific therapeutic interventions are documented.",
+          "suggestion": "Name specific evidence-based interventions utilized (e.g., CBT cognitive restructuring)."
+        },
+        {
+          "criterionId": "response",
+          "status": "fail",
+          "finding": "The client's response is overly vague ('Client seemed fine') without noting engagement or progress.",
+          "suggestion": "Document specific client engagement, processing, and reaction to the interventions."
+        },
+        {
+          "criterionId": "risk",
+          "status": "fail",
+          "finding": "Safety and risk assessment is completely omitted.",
+          "suggestion": "Explicitly document a risk assessment (e.g., 'Client denies SI/HI')."
+        },
+        {
+          "criterionId": "plan",
+          "status": "warn",
+          "finding": "The note states 'Will see again' but lacks a concrete plan or next appointment date.",
+          "suggestion": "Document specific homework/next steps and the exact date/time of the next appointment."
+        },
+        {
+          "criterionId": "signature",
+          "status": "fail",
+          "finding": "The note lacks a clinician signature and credentials.",
+          "suggestion": "Sign the note with your legal name and professional credentials."
+        }
+      ]
+    }
+  },
+  "seconds": 6.5,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 3015
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 857
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1446
+    }
+  ]
+}

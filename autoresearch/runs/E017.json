@@ -1,0 +1,9 @@
+{
+  "id": "E017",
+  "title": "CSV parser/serializer round-trips tricky values",
+  "hypothesis": "Quotes, commas, newlines, BOM and CRLF survive a round trip.",
+  "status": "pass",
+  "score": 1,
+  "notes": "exact round trip",
+  "seconds": 0
+}

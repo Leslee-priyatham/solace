@@ -1,0 +1,22 @@
+{
+  "id": "E056",
+  "title": "Prior-session background is not restated as a new finding",
+  "hypothesis": "priorSummary (past alcohol use) is used for continuity only, not documented as discussed today.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"alcoholAsNew\":false,\"accidentAsNew\":false,\"quote\":\"Substance use regarding alcohol was not discussed this session.\"}",
+  "data": "Subjective\nClient reported that they applied for the team lead role, with an interview scheduled for next Friday. Client stated they have been rehearsing what could go wrong and described anticipatory anxiety, expressing the fear that &quot;they'll realise I'm a fraud and I'll lose the job I have now too.&quot;\n\nObjective\nClient appeared engaged and cooperative during the 50-minute individual session. Speech was clear and coherent. Affect was anxious initially when discussing the upcoming interview, but shifted to more relaxed and receptive during cognitive restructuring and the mock interview exercise. Thought process was logical and goal-directed.\n\nAssessment\nClient demonstrates insight when prompted to examine evidence against cognitive distortions such as feeling like a &quot;fraud&quot; (acknowledging two previous promotions, good performance reviews, and that management does not know everything). Progress toward treatment goals includes successfully engaging in cognitive reframing and participating in a mock interview. Risk level is low; no risk statements or safety concerns were assessed this session. Substance use regarding alcohol was not discussed this session.\n\nPlan\nContinue cognitive behavioral interventions targeting anxiety and impostor cognitions related to the upcoming interview Practice interview preparation and coping strategies between sessions Schedule next individual session for 50 minutes",
+  "seconds": 79.4,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1033
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "status": 200,
+      "ms": 68612
+    }
+  ]
+}

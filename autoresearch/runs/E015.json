@@ -1,0 +1,91 @@
+{
+  "id": "E015",
+  "title": "PHQ-9 / GAD-7 scoring and severity bands are correct at every boundary",
+  "hypothesis": "Measure scores sum correctly and map to standard bands.",
+  "status": "pass",
+  "score": 1,
+  "notes": "PHQ-9 items=9; failures: none",
+  "data": [
+    {
+      "s": 0,
+      "got": {
+        "score": 0,
+        "severity": "Minimal"
+      },
+      "ok": true
+    },
+    {
+      "s": 4,
+      "got": {
+        "score": 4,
+        "severity": "Minimal"
+      },
+      "ok": true
+    },
+    {
+      "s": 5,
+      "got": {
+        "score": 5,
+        "severity": "Mild"
+      },
+      "ok": true
+    },
+    {
+      "s": 9,
+      "got": {
+        "score": 9,
+        "severity": "Mild"
+      },
+      "ok": true
+    },
+    {
+      "s": 10,
+      "got": {
+        "score": 10,
+        "severity": "Moderate"
+      },
+      "ok": true
+    },
+    {
+      "s": 14,
+      "got": {
+        "score": 14,
+        "severity": "Moderate"
+      },
+      "ok": true
+    },
+    {
+      "s": 15,
+      "got": {
+        "score": 15,
+        "severity": "Moderately severe"
+      },
+      "ok": true
+    },
+    {
+      "s": 19,
+      "got": {
+        "score": 19,
+        "severity": "Moderately severe"
+      },
+      "ok": true
+    },
+    {
+      "s": 20,
+      "got": {
+        "score": 20,
+        "severity": "Severe"
+      },
+      "ok": true
+    },
+    {
+      "s": 27,
+      "got": {
+        "score": 27,
+        "severity": "Severe"
+      },
+      "ok": true
+    }
+  ],
+  "seconds": 0
+}

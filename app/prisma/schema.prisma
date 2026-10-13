@@ -1,0 +1,775 @@
+// Solace — practice management + AI documentation for therapists.
+// SQLite for local use; money is stored in integer cents; "enum" columns are
+// plain strings whose allowed values are listed in src/lib/constants.ts.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────────────────── Practice & team ─────────────────────────
+
+model Practice {
+  id           String   @id @default(cuid())
+  name         String
+  displayName  String?
+  email        String?
+  phone        String?
+  country      String   @default("US")
+  currency     String   @default("USD")
+  timezone     String   @default("America/New_York")
+  brandColor   String   @default("#6d4aff")
+  logoUrl      String?
+  address      String?
+  taxId        String?
+  slug         String   @unique
+  // reminders, portal, billing defaults, compliance prefs, invoice footer …
+  settings     Json?
+  createdAt    DateTime @default(now())
+}
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  passwordHash   String?
+  firstName      String
+  middleName     String?
+  lastName       String
+  suffix         String?
+  role           String    @default("CLINICIAN") // ADMIN | CLINICIAN | BILLER
+  status         String    @default("ACTIVE") // ACTIVE | INVITED | DISABLED
+  inviteToken    String?   @unique
+  phone          String?
+  timezone       String    @default("America/New_York")
+  npi            String?
+  taxonomy       String?
+  taxIdType      String?
+  taxId          String?
+  license        String?
+  telehealthSlug String    @unique
+  messagingName  String?
+  // note identifiers, defaults, calendar view prefs, assistant memory toggle …
+  preferences    Json?
+  createdAt      DateTime  @default(now())
+  lastLoginAt    DateTime?
+
+  clients          Client[]          @relation("PrimaryProvider")
+  appointments     Appointment[]
+  sessions         Session[]
+  availability     AvailabilityRule[]
+  aiConversations  AiConversation[]
+  memories         AssistantMemory[]
+  auditLogs        AuditLog[]
+}
+
+model Location {
+  id             String   @id @default(cuid())
+  name           String
+  kind           String   @default("OFFICE") // OFFICE | TELEHEALTH
+  address        String?
+  placeOfService String   @default("11")
+  createdAt      DateTime @default(now())
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  name         String
+  cpt          String?
+  description  String?
+  durationMin  Int      @default(50)
+  rateCents    Int      @default(0)
+  selfSchedule Boolean  @default(false)
+  sortOrder    Int      @default(0)
+  archived     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  appointments Appointment[]
+}
+
+model AvailabilityRule {
+  id        String @id @default(cuid())
+  userId    String
+  weekday   Int // 0 = Sunday
+  startMin  Int // minutes from midnight
+  endMin    Int
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Clients ─────────────────────────
+
+model Client {
+  id             String    @id @default(cuid())
+  mrn            String    @unique
+  kind           String    @default("INDIVIDUAL") // INDIVIDUAL | COUPLE | FAMILY
+  firstName      String
+  lastName       String
+  preferredName  String?
+  email          String?
+  phone          String?
+  dob            DateTime?
+  pronouns       String?
+  gender         String?
+  address        String?
+  status         String    @default("ACTIVE") // ACTIVE | PROSPECT | INACTIVE | DISCHARGED
+  modalities     Json?                     // ["CBT", "EMDR", …]
+  notes          String?
+  billingType    String    @default("SELF_PAY") // SELF_PAY | INSURANCE
+  defaultServiceId String?
+  portalToken    String    @unique
+  portalSummary  String? // treatment summary shared to the client portal
+  smsConsent     Boolean   @default(false)
+  remindersOn    Boolean   @default(true)
+  // progress-note template, client-note template, referral term overrides
+  notePrefs      Json?
+  isDemo         Boolean   @default(false)
+  providerId     String?
+  provider       User?     @relation("PrimaryProvider", fields: [providerId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  tags            Tag[]
+  contacts        ClientContact[]
+  diagnoses       Diagnosis[]
+  appointments    Appointment[]
+  sessions        Session[]
+  notes_          NoteDocument[]
+  chartNotes      ChartNote[]
+  files           ClientFile[]
+  treatmentPlan   TreatmentPlan?
+  summary         TreatmentSummary?
+  formRequests    FormRequest[]
+  measureScores   MeasureScore[]
+  conversations   Conversation[]
+  invoices        Invoice[]
+  payments        Payment[]
+  superbills      Superbill[]
+  policies        InsurancePolicy[]
+  claims          Claim[]
+  authorizations  PriorAuthorization[]
+}
+
+model Tag {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  color   String   @default("#6d4aff")
+  clients Client[]
+}
+
+model ClientContact {
+  id            String  @id @default(cuid())
+  clientId      String
+  name          String
+  relationship  String?
+  email         String?
+  phone         String?
+  isEmergency   Boolean @default(false)
+  isParticipant Boolean @default(false) // second partner / family member in session
+  archived      Boolean @default(false)
+  client        Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Diagnosis {
+  id          String @id @default(cuid())
+  clientId    String
+  code        String
+  description String
+  sortOrder   Int    @default(0)
+  client      Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Calendar ─────────────────────────
+
+model Appointment {
+  id            String    @id @default(cuid())
+  kind          String    @default("SESSION") // SESSION | TIME_OFF | OTHER
+  title         String?
+  clientId      String?
+  providerId    String
+  serviceId     String?
+  locationId    String?
+  modality      String    @default("TELEHEALTH") // IN_PERSON | TELEHEALTH
+  startsAt      DateTime
+  endsAt        DateTime
+  status        String    @default("SCHEDULED") // REQUESTED | SCHEDULED | COMPLETED | CANCELLED | LATE_CANCEL | NO_SHOW
+  recurrence    String? // NONE | WEEKLY | BIWEEKLY | MONTHLY
+  seriesId      String?
+  notes         String?
+  bookedOnline  Boolean   @default(false)
+  feeCents      Int?
+  createdAt     DateTime  @default(now())
+
+  client   Client?   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  provider User      @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  service  Service?  @relation(fields: [serviceId], references: [id])
+  session  Session?
+}
+
+model ExternalCalendar {
+  id           String    @id @default(cuid())
+  name         String
+  icsUrl       String
+  color        String    @default("#94a3b8")
+  events       Json?
+  lastSyncedAt DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+// ───────────────────────── Sessions & documentation ─────────────────────────
+
+model Session {
+  id            String    @id @default(cuid())
+  clientId      String?
+  providerId    String
+  appointmentId String?   @unique
+  title         String?
+  synopsis      String?
+  captureMode   String    @default("IN_PERSON") // IN_PERSON | VIRTUAL | TELEHEALTH | UPLOAD | DICTATION | TEXT
+  status        String    @default("DRAFT") // DRAFT | RECORDING | TRANSCRIBING | GENERATING | READY | ERROR
+  error         String?
+  startedAt     DateTime  @default(now())
+  endedAt       DateTime?
+  durationSec   Int       @default(0)
+  audioPath     String?
+  rawText       String? // dictation / pasted text
+  transcript    Json?                     // [{start, end, speaker, text}]
+  chapters      Json?                     // [{title, start}]
+  speakerMap    Json?                     // {"A": "PROVIDER", "B": "CLIENT"}
+  analytics     Json?                     // talking ratio etc.
+  billingType   String    @default("SELF_PAY") // SELF_PAY | INSURANCE | NONE
+  cpt           String?
+  feeCents      Int?
+  writeOff      Boolean   @default(false)
+  seenAt        DateTime?
+  isDemo        Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  client       Client?        @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  provider     User           @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  appointment  Appointment?   @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  documents    NoteDocument[]
+  invoiceItems InvoiceItem[]
+  claimLines   ClaimLine[]
+}
+
+model NoteTemplate {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  category    String   @default("PROGRESS") // PROGRESS | INTAKE | TREATMENT_PLAN | DISCHARGE | CLIENT_NOTE | OTHER
+  audience    String   @default("INDIVIDUAL") // INDIVIDUAL | COUPLE | FAMILY | ANY
+  // [{id, title, instructions, format: "paragraph" | "bullets" | "short"}]
+  sections    Json?
+  guidance    String? // global instructions for the whole note
+  isSystem    Boolean  @default(false)
+  archived    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  documents NoteDocument[]
+}
+
+model NoteDocument {
+  id          String    @id @default(cuid())
+  sessionId   String?
+  clientId    String?
+  templateId  String?
+  title       String
+  // [{id, title, html, rating?: "up" | "down"}]
+  sections    Json?
+  status      String    @default("DRAFT") // GENERATING | DRAFT | SIGNED | ERROR
+  signedAt    DateTime?
+  signedBy    String?
+  signature   String?
+  compliance  Json? // last compliance check result
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  session  Session?      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  client   Client?       @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  template NoteTemplate? @relation(fields: [templateId], references: [id], onDelete: SetNull)
+}
+
+model ChartNote {
+  id        String   @id @default(cuid())
+  clientId  String
+  date      DateTime @default(now())
+  title     String
+  html      String
+  authorId  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model ClientFile {
+  id         String   @id @default(cuid())
+  clientId   String
+  name       String
+  mime       String
+  size       Int
+  path       String
+  uploadedAt DateTime @default(now())
+  client     Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model TreatmentPlan {
+  id           String   @id @default(cuid())
+  clientId     String   @unique
+  caseSnapshot String   @default("")
+  // [{id, title, goal, objectives: [{id, text, status}], interventions: [string]}]
+  areas        Json?
+  status       String   @default("READY") // GENERATING | READY | ERROR
+  generatedAt  DateTime?
+  updatedAt    DateTime @updatedAt
+  client       Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model TreatmentSummary {
+  id              String   @id @default(cuid())
+  clientId        String   @unique
+  // {presentingConcerns, goals[], progress, interventions[], risk, nextSteps}
+  content         Json?
+  sourceSessionId String?
+  generatedAt     DateTime @default(now())
+  client          Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Practice forms ─────────────────────────
+
+model Form {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  kind        String   @default("INTAKE") // INTAKE | CONSENT | ASSESSMENT | OTHER
+  // [{id, type, label, help?, required?, options?: string[], scores?: number[]}]
+  fields      Json?
+  measure     String? // PHQ9 | GAD7 — enables scoring + insights
+  isLibrary   Boolean  @default(false) // template library entry (copy to use)
+  archived    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  requests FormRequest[]
+}
+
+model FormPacket {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  formIds     Json?
+  createdAt   DateTime @default(now())
+}
+
+model FormRequest {
+  id            String    @id @default(cuid())
+  clientId      String
+  formId        String
+  packetId      String?
+  token         String    @unique
+  status        String    @default("SENT") // SENT | IN_PROGRESS | COMPLETED | REVOKED
+  answers       Json?
+  score         Int?
+  signatureName String?
+  sentAt        DateTime  @default(now())
+  completedAt   DateTime?
+  remindedAt    DateTime?
+  client        Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  form          Form      @relation(fields: [formId], references: [id], onDelete: Cascade)
+}
+
+model MeasureScore {
+  id            String   @id @default(cuid())
+  clientId      String
+  measure       String // PHQ9 | GAD7
+  score         Int
+  severity      String
+  formRequestId String?
+  takenAt       DateTime @default(now())
+  client        Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Messaging ─────────────────────────
+
+model Conversation {
+  id             String    @id @default(cuid())
+  clientId       String
+  archived       Boolean   @default(false)
+  providerUnread Int       @default(0)
+  clientUnread   Int       @default(0)
+  lastMessageAt  DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+  client         Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  messages       Message[]
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  sender         String // PROVIDER | CLIENT
+  authorName     String?
+  body           String
+  attachmentName String?
+  attachmentPath String?
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
+
+model Announcement {
+  id         String   @id @default(cuid())
+  subject    String
+  body       String
+  clientIds  Json?
+  sentAt     DateTime @default(now())
+}
+
+// ───────────────────────── Payments ─────────────────────────
+
+model Invoice {
+  id          String    @id @default(cuid())
+  number      String    @unique
+  clientId    String
+  status      String    @default("DRAFT") // DRAFT | SENT | PARTIAL | PAID | VOID | WRITTEN_OFF
+  issueDate   DateTime  @default(now())
+  dueDate     DateTime?
+  notes       String?
+  totalCents  Int       @default(0)
+  paidCents   Int       @default(0)
+  sentAt      DateTime?
+  createdAt   DateTime  @default(now())
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  items       InvoiceItem[]
+  allocations PaymentAllocation[]
+}
+
+model InvoiceItem {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  sessionId   String?
+  date        DateTime @default(now())
+  description String
+  cpt         String?
+  quantity    Int      @default(1)
+  unitCents   Int
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  session     Session? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+}
+
+model Payment {
+  id            String    @id @default(cuid())
+  clientId      String
+  amountCents   Int
+  refundedCents Int       @default(0)
+  method        String    @default("CARD") // CARD | CASH | CHECK | BANK_TRANSFER | INSURANCE | OTHER
+  reference     String?
+  notes         String?
+  receivedAt    DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  client        Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  allocations   PaymentAllocation[]
+}
+
+model PaymentAllocation {
+  id          String  @id @default(cuid())
+  paymentId   String
+  invoiceId   String
+  amountCents Int
+  payment     Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+}
+
+model Superbill {
+  id          String   @id @default(cuid())
+  number      String   @unique
+  clientId    String
+  periodStart DateTime
+  periodEnd   DateTime
+  sessionIds  Json?
+  totalCents  Int      @default(0)
+  sentAt      DateTime?
+  createdAt   DateTime @default(now())
+  client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Insurance ─────────────────────────
+
+model Payer {
+  id        String   @id @default(cuid())
+  name      String
+  payerCode String
+  address   String?
+  phone     String?
+  createdAt DateTime @default(now())
+
+  policies    InsurancePolicy[]
+  enrollments PayerEnrollment[]
+  payments    InsurancePayment[]
+}
+
+model BillingProfile {
+  id        String   @id @default(cuid())
+  name      String
+  kind      String   @default("INDIVIDUAL") // INDIVIDUAL | GROUP
+  npi       String
+  taxId     String
+  taxonomy  String?
+  address   String?
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  enrollments PayerEnrollment[]
+  claims      Claim[]
+}
+
+model PayerEnrollment {
+  id               String    @id @default(cuid())
+  payerId          String
+  billingProfileId String
+  status           String    @default("PENDING") // PENDING | SUBMITTED | APPROVED | REJECTED
+  submittedAt      DateTime?
+  createdAt        DateTime  @default(now())
+  payer            Payer          @relation(fields: [payerId], references: [id], onDelete: Cascade)
+  billingProfile   BillingProfile @relation(fields: [billingProfileId], references: [id], onDelete: Cascade)
+}
+
+model InsurancePolicy {
+  id                  String    @id @default(cuid())
+  clientId            String
+  payerId             String
+  priority            Int       @default(1) // 1 primary, 2 secondary
+  memberId            String
+  groupNumber         String?
+  planName            String?
+  subscriberName      String?
+  subscriberDob       DateTime?
+  relationship        String    @default("SELF")
+  copayCents          Int?
+  coinsurancePct      Int?
+  deductibleCents     Int?
+  effectiveFrom       DateTime?
+  effectiveTo         DateTime?
+  eligibility         Json? // last eligibility check result
+  archived            Boolean   @default(false)
+  createdAt           DateTime  @default(now())
+  client              Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  payer               Payer     @relation(fields: [payerId], references: [id])
+  claims              Claim[]
+}
+
+model PriorAuthorization {
+  id             String    @id @default(cuid())
+  clientId       String
+  authNumber     String
+  cpt            String?
+  visitsAllowed  Int?
+  visitsUsed     Int       @default(0)
+  startDate      DateTime
+  endDate        DateTime?
+  archived       Boolean   @default(false)
+  client         Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Claim {
+  id                  String    @id @default(cuid())
+  number              String    @unique
+  clientId            String
+  policyId            String
+  billingProfileId    String?
+  status              String    @default("DRAFT") // DRAFT | READY | SUBMITTED | ACCEPTED | REJECTED | PAID | PARTIAL | DENIED | VOID
+  diagnosisCodes      Json?
+  totalCents          Int       @default(0)
+  paidCents           Int       @default(0)
+  patientRespCents    Int       @default(0)
+  payerControlNumber  String?
+  submittedAt         DateTime?
+  history             Json?                     // [{at, status, note}]
+  adjudication        Json?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  client              Client          @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  policy              InsurancePolicy @relation(fields: [policyId], references: [id])
+  billingProfile      BillingProfile? @relation(fields: [billingProfileId], references: [id])
+  lines               ClaimLine[]
+}
+
+model ClaimLine {
+  id          String   @id @default(cuid())
+  claimId     String
+  sessionId   String?
+  serviceDate DateTime
+  cpt         String
+  modifiers   String?
+  pos         String   @default("10")
+  units       Int      @default(1)
+  chargeCents Int
+  dxPointers  String   @default("A")
+  paidCents   Int      @default(0)
+  claim       Claim    @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  session     Session? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+}
+
+model InsurancePayment {
+  id          String   @id @default(cuid())
+  payerId     String
+  checkNumber String?
+  receivedAt  DateTime @default(now())
+  amountCents Int
+  // [{claimId, paidCents, patientRespCents, adjustmentCents, reason}]
+  lines       Json?
+  status      String   @default("POSTED") // POSTED | UNPOSTED
+  createdAt   DateTime @default(now())
+  payer       Payer    @relation(fields: [payerId], references: [id])
+}
+
+// ───────────────────────── Assistant ─────────────────────────
+
+model AiConversation {
+  id        String      @id @default(cuid())
+  userId    String
+  title     String      @default("New chat")
+  clientId  String?
+  sessionId String?
+  routineId String?
+  archived  Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages  AiMessage[]
+}
+
+model AiMessage {
+  id             String         @id @default(cuid())
+  conversationId String
+  role           String // user | assistant
+  content        String
+  createdAt      DateTime       @default(now())
+  conversation   AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
+
+model AssistantMemory {
+  id        String   @id @default(cuid())
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AssistantSkill {
+  id           String   @id @default(cuid())
+  name         String
+  description  String
+  instructions String
+  createdAt    DateTime @default(now())
+}
+
+model AssistantRoutine {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  prompt      String
+  trigger     String    @default("MANUAL") // MANUAL | DAILY | BEFORE_SESSION | AFTER_SESSION
+  timeOfDay   String? // "08:00" for DAILY
+  enabled     Boolean   @default(false)
+  isBuiltIn   Boolean   @default(false)
+  lastRunAt   DateTime?
+  createdAt   DateTime  @default(now())
+}
+
+// ───────────────────────── Compliance ─────────────────────────
+
+model ComplianceCriteriaGroup {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  criteria    Json?                    // [{id, title, description}]
+  isSystem    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model ComplianceCheck {
+  id             String   @id @default(cuid())
+  groupId        String
+  noteDocumentId String?
+  fileName       String?
+  status         String   @default("RUNNING") // RUNNING | DONE | ERROR
+  result         Json? // {score, items: [{criterionId, status: pass|warn|fail, finding, suggestion}]}
+  error          String?
+  createdAt      DateTime @default(now())
+}
+
+// ───────────────────────── Reports ─────────────────────────
+
+model Dashboard {
+  id        String          @id @default(cuid())
+  name      String
+  sortOrder Int             @default(0)
+  filters   Json?
+  createdAt DateTime        @default(now())
+  tiles     DashboardTile[]
+}
+
+model DashboardTile {
+  id          String    @id @default(cuid())
+  dashboardId String
+  metric      String // sessions_over_time | caseload | days_to_signoff | revenue | outstanding | measures | …
+  title       String
+  width       Int       @default(1) // 1 or 2 columns
+  sortOrder   Int       @default(0)
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Telehealth ─────────────────────────
+
+model TelehealthSignal {
+  id        String   @id @default(cuid())
+  room      String
+  peer      String // sender peer id
+  target    String? // recipient peer id (null = broadcast)
+  kind      String // join | offer | answer | ice | leave
+  payload   String
+  createdAt DateTime @default(now())
+
+  @@index([room, createdAt])
+}
+
+// ───────────────────────── Platform ─────────────────────────
+
+// Saved model providers. Keys are encrypted at rest with APP_SECRET.
+model AiProvider {
+  id         String   @id @default(cuid())
+  label      String
+  kind       String // openai | anthropic | gemini | openai_compatible | deepgram | assemblyai
+  baseUrl    String?
+  apiKeyEnc  String?
+  model      String?
+  createdAt  DateTime @default(now())
+}
+
+model Setting {
+  key   String @id
+  value Json
+}
+
+model ImportJob {
+  id        String   @id @default(cuid())
+  kind      String // CSV_CLIENTS
+  fileName  String
+  status    String   @default("DONE")
+  summary   Json?
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  detail    String?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+}

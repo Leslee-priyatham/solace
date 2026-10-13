@@ -1,0 +1,180 @@
+{
+  "id": "E022",
+  "title": "Page sweep: clinical workflow pages render",
+  "hypothesis": "Home, calendar, sessions, clients (all tabs), capture and templates render without server errors.",
+  "status": "pass",
+  "score": 1,
+  "notes": "24/24 OK; slowest 264ms",
+  "data": [
+    {
+      "p": "/home",
+      "status": 200,
+      "ms": 264,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/calendar",
+      "status": 200,
+      "ms": 70,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/sessions",
+      "status": 200,
+      "ms": 55,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/sessions/cmv4lf5zd001htdkcjl6qeve8",
+      "status": 200,
+      "ms": 60,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients",
+      "status": 200,
+      "ms": 41,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/new",
+      "status": 200,
+      "ms": 44,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/import",
+      "status": 307,
+      "ms": 62,
+      "ok": true,
+      "redirect": "/settings/imports"
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i",
+      "status": 200,
+      "ms": 86,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/summary",
+      "status": 200,
+      "ms": 48,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/treatment-plan",
+      "status": 200,
+      "ms": 62,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/forms",
+      "status": 200,
+      "ms": 50,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/insights",
+      "status": 200,
+      "ms": 59,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/chart-notes",
+      "status": 200,
+      "ms": 97,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/files",
+      "status": 200,
+      "ms": 85,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/billing",
+      "status": 200,
+      "ms": 98,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/clients/cmv4lf5yk001etdkc7h6s6y8i/edit",
+      "status": 200,
+      "ms": 67,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/capture",
+      "status": 200,
+      "ms": 57,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/capture/record",
+      "status": 200,
+      "ms": 46,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/capture/upload",
+      "status": 200,
+      "ms": 30,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/capture/write",
+      "status": 200,
+      "ms": 34,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/templates",
+      "status": 200,
+      "ms": 44,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/templates/new",
+      "status": 200,
+      "ms": 27,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/templates/convert",
+      "status": 200,
+      "ms": 55,
+      "ok": true,
+      "redirect": null
+    },
+    {
+      "p": "/templates/cmv4lf57g000ctdkcocn9zkpu",
+      "status": 200,
+      "ms": 28,
+      "ok": true,
+      "redirect": null
+    }
+  ],
+  "seconds": 1.6,
+  "calls": []
+}

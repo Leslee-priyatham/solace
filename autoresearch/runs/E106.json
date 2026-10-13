@@ -1,0 +1,10 @@
+{
+  "id": "E106",
+  "title": "Long recordings: if diarization is rejected, retry without it and still return text",
+  "hypothesis": "A 400 on the diarized request → second request without diarization → sentence-split transcript.",
+  "status": "pass",
+  "score": 1,
+  "notes": "2 requests; 2 utterances; diarized=false",
+  "seconds": 0,
+  "calls": []
+}

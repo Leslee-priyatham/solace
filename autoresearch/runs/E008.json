@@ -1,0 +1,9 @@
+{
+  "id": "E008",
+  "title": "API key is encrypted at rest (AES-GCM, random IV)",
+  "hypothesis": "The DB never stores the key in plain text and ciphertexts are non-deterministic.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"notPlain\":true,\"roundTrip\":true,\"randomIv\":true,\"masked\":true,\"tamperDetected\":true}",
+  "seconds": 0
+}

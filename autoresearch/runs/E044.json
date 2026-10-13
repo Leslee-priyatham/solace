@@ -1,0 +1,45 @@
+{
+  "id": "E044",
+  "title": "Session recap for client note from F1: every section written + planted facts recalled",
+  "hypothesis": "The Session recap for client template produces a complete note that captures the session's key facts.",
+  "status": "partial",
+  "score": 0.7222222222222222,
+  "notes": "3 sections, 0 missing; recall 44% (missing: belief_90_40,sleep_4h,sertraline_50,denies_si,suds_6_to_3); 1237 chars; 21.9s",
+  "data": {
+    "sections": [
+      {
+        "id": "recap",
+        "title": "What we talked about",
+        "html": "<p>During our session today, we reviewed how your week went, including a difficult panic episode at the grocery store. We looked at the thought records you completed, noticing how your belief in your worries shifted after stepping away from the situation. We also discussed changes in your medication and sleep patterns.</p><p>Together, we tried a brief exercise in session to safely bring on physical sensations like dizziness so you could observe how your body handles them and how the feelings naturally pass. Finally, we talked about setting boundaries with family advice and planned your practice goals for the coming week.</p>"
+      },
+      {
+        "id": "insights",
+        "title": "What stood out",
+        "html": "<ul><li>You showed great dedication by completing two thought records this week even though things felt rough.</li><li>You demonstrated wonderful self-awareness by recognizing how your anxious thoughts changed in intensity after the moment passed.</li><li>You showed courage by participating in the in-session physical exercise and noticing how quickly your anxiety came down on its own.</li></ul>"
+      },
+      {
+        "id": "practice",
+        "title": "To practise this week",
+        "html": "<ul><li>Complete thought records three times this week.</li><li>Practise the spinning exercise once a day at home.</li><li>Visit the grocery store on a quiet Saturday morning and stay until your anxiety drops by half.</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 0.4444444444444444,
+      "missing": [
+        "belief_90_40",
+        "sleep_4h",
+        "sertraline_50",
+        "denies_si",
+        "suds_6_to_3"
+      ]
+    }
+  },
+  "seconds": 21.9,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 2735
+    }
+  ]
+}

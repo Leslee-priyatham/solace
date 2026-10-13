@@ -1,0 +1,47 @@
+{
+  "id": "E043",
+  "title": "Discharge summary note from F1: every section written + planted facts recalled",
+  "hypothesis": "The Discharge summary template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "4 sections, 0 missing; recall 78% (missing: sleep_4h,denies_si); 1069 chars; 8.1s",
+  "data": {
+    "sections": [
+      {
+        "id": "course",
+        "title": "Course of treatment",
+        "html": "<p>Dates and exact number of sessions were not assessed this session.</p><p>Treatment utilized Cognitive Behavioral Therapy (CBT) with a focus on treating Panic Disorder (F41.0), addressing catastrophic cognitions regarding panic symptoms, utilizing thought records, and conducting interoceptive exposure.</p>"
+      },
+      {
+        "id": "progress",
+        "title": "Progress toward goals",
+        "html": "<p>The client demonstrated progress in identifying catastrophic thoughts, noting a decrease in belief ratings from 90% in the moment to 40% afterward when reviewing a panic attack at the grocery store. The client also successfully engaged in interoceptive exposure during the session, experiencing a decrease in anxiety from a rating of 6 to 3 within two minutes.</p>"
+      },
+      {
+        "id": "reason",
+        "title": "Reason for discharge",
+        "html": "<p>Not assessed this session.</p>"
+      },
+      {
+        "id": "recommendations",
+        "title": "Recommendations",
+        "html": "<ul><li>Continue completing thought records three times per week</li><li>Practice the interoceptive spinning exercise once a day at home</li><li>Practice returning to the grocery store on a quiet morning and staying until anxiety decreases by half</li><li>Continue medication management with primary care provider regarding sertraline</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 0.7777777777777778,
+      "missing": [
+        "sleep_4h",
+        "denies_si"
+      ]
+    }
+  },
+  "seconds": 8.1,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1319
+    }
+  ]
+}

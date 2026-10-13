@@ -1,0 +1,9 @@
+{
+  "id": "E011",
+  "title": "chatJson returns valid JSON with the requested keys (5 calls)",
+  "hypothesis": "JSON mode on Gemini is dependable for small schemas.",
+  "status": "pass",
+  "score": 1,
+  "notes": "5/5 valid",
+  "seconds": 3.7
+}

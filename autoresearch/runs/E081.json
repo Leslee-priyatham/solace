@@ -1,0 +1,10 @@
+{
+  "id": "E081",
+  "title": "Recordings over 18 MB are rejected with a clear message before any upload",
+  "hypothesis": "Gemini inline-audio size limit is enforced locally.",
+  "status": "pass",
+  "score": 1,
+  "notes": "Google Gemini returned size: Recording is too large for Gemini inline audio (18 MB). Use Deepgram, AssemblyAI or OpenAI for long sessions.; API calls made: 0",
+  "seconds": 0,
+  "calls": []
+}

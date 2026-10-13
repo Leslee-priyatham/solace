@@ -1,0 +1,10 @@
+{
+  "id": "E085",
+  "title": "Write-mode session end to end with a working model (gemini-3.5-flash-lite)",
+  "hypothesis": "Dictation → title, synopsis and a DRAFT note with every section filled, via the real API.",
+  "status": "pass",
+  "score": 1,
+  "notes": "READY in 12s; {\"ready\":true,\"title\":true,\"synopsis\":true,\"draft\":true,\"filled\":true}; title \"Follow-up on Work Stress Management and Breathing Techniques\"; template Standard progress note; 6/6 sections",
+  "seconds": 13.2,
+  "calls": []
+}

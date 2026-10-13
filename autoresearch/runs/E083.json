@@ -1,0 +1,15 @@
+{
+  "id": "E083",
+  "title": "Gemini transcription with a blank model falls back to a model this key can use",
+  "hypothesis": "The code's fallback 'gemini-2.5-flash' returned 404 for this key in E003, so a blank model breaks transcription.",
+  "status": "pass",
+  "score": 1,
+  "notes": "fallback model worked",
+  "seconds": 5.2,
+  "calls": [
+    {
+      "model": "gemini-3.5-transcribe",
+      "raw": true
+    }
+  ]
+}

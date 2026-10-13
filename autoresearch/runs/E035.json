@@ -1,0 +1,44 @@
+{
+  "id": "E035",
+  "title": "SOAP note from F1: every section written + planted facts recalled",
+  "hypothesis": "The SOAP template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "4 sections, 0 missing; recall 100% (missing: none); 2303 chars; 12.6s",
+  "data": {
+    "sections": [
+      {
+        "id": "subjective",
+        "title": "Subjective",
+        "html": "<p>The Client reported a rough week, noting a panic attack on Tuesday at the grocery store checkout line with a pounding heart, which led them to leave their cart and walk out. The Client reported thoughts of passing out in front of everyone and having others think they were crazy, rating this belief at 90% in the moment and 40% later at home. The Client completed two out of three assigned thought records. Sleep was reported as poor, averaging about four hours a night with frequent waking around 3:00 AM. The Client reported starting sertraline 50 mg prescribed by their primary care doctor two weeks ago, with initial nausea that has since resolved. The Client denied any thoughts of self-harm or not wanting to be alive, stating they just want the panic to stop. The Client mentioned that their sister Dana's advice to 'push through it' feels unhelpful and dismissive, though the Client declined to invite Dana to a session at this time.</p>"
+      },
+      {
+        "id": "objective",
+        "title": "Objective",
+        "html": "<p>The Client was seen for a 50-minute individual session utilizing Cognitive Behavioral Therapy (CBT). Appearance, behavior, speech, affect, and thought process were within normal limits, though the Client appeared fatigued due to poor sleep. During an in-session interoceptive exposure exercise involving spinning in a chair for 30 seconds, the Client reported anxiety peaking at a rating of 6 out of 10, which decreased to a 3 out of 10 within two minutes.</p>"
+      },
+      {
+        "id": "assessment",
+        "title": "Assessment",
+        "html": "<p>The Client demonstrates partial progress toward treatment goals, evidenced by completing two thought records and successfully recognizing the cognitive shift when rating belief in a catastrophic outcome down from 90% to 40% retrospectively. The Client actively participated in interoceptive exposure and experienced firsthand that physiological sensations peak and pass without catastrophic outcomes. Current diagnostic impressions remain consistent with F41.0 Panic Disorder. Risk level for self-harm is currently none assessed. The Client is responding positively to CBT interventions.</p>"
+      },
+      {
+        "id": "plan",
+        "title": "Plan",
+        "html": "<ul><li>Complete thought records three times this week.</li><li>Practise the spinning interoceptive exposure exercise once a day at home.</li><li>Return to the grocery store on a quiet Saturday morning and stay until anxiety drops by half.</li><li>Attend next therapy session at the scheduled time next week.</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 1,
+      "missing": []
+    }
+  },
+  "seconds": 12.6,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 949
+    }
+  ]
+}

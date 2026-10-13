@@ -1,0 +1,125 @@
+{
+  "id": "E003",
+  "title": "Model sweep: which Gemini text models are usable now (3 calls each)",
+  "hypothesis": "At least one stronger model than flash-lite is usable, so the configured choice is the problem, not the key.",
+  "status": "fail",
+  "score": 0.3333333333333333,
+  "notes": "gemini-3.7-flash: 0/3 (503×2 hang>45s×1); gemini-3.6-flash: 3/3 (200×3); gemini-3.5-flash: 3/3 (200×3); gemini-2.5-flash: 0/3 (404×3); gemini-2.5-pro: 0/3 (404×3); gemini-flash-latest: 0/3 (429×2 503×1)",
+  "data": [
+    {
+      "m": "gemini-3.7-flash",
+      "ok": 0,
+      "n": 3,
+      "out": [
+        {
+          "status": 503,
+          "ms": 2150
+        },
+        {
+          "status": 503,
+          "ms": 2492
+        },
+        {
+          "status": "hang>45s",
+          "ms": 45021
+        }
+      ]
+    },
+    {
+      "m": "gemini-3.6-flash",
+      "ok": 3,
+      "n": 3,
+      "out": [
+        {
+          "status": 200,
+          "ms": 3461
+        },
+        {
+          "status": 200,
+          "ms": 3511
+        },
+        {
+          "status": 200,
+          "ms": 8411
+        }
+      ]
+    },
+    {
+      "m": "gemini-3.5-flash",
+      "ok": 3,
+      "n": 3,
+      "out": [
+        {
+          "status": 200,
+          "ms": 2779
+        },
+        {
+          "status": 200,
+          "ms": 8537
+        },
+        {
+          "status": 200,
+          "ms": 8641
+        }
+      ]
+    },
+    {
+      "m": "gemini-2.5-flash",
+      "ok": 0,
+      "n": 3,
+      "out": [
+        {
+          "status": 404,
+          "ms": 1026
+        },
+        {
+          "status": 404,
+          "ms": 1128
+        },
+        {
+          "status": 404,
+          "ms": 1134
+        }
+      ]
+    },
+    {
+      "m": "gemini-2.5-pro",
+      "ok": 0,
+      "n": 3,
+      "out": [
+        {
+          "status": 404,
+          "ms": 812
+        },
+        {
+          "status": 404,
+          "ms": 929
+        },
+        {
+          "status": 404,
+          "ms": 1120
+        }
+      ]
+    },
+    {
+      "m": "gemini-flash-latest",
+      "ok": 0,
+      "n": 3,
+      "out": [
+        {
+          "status": 429,
+          "ms": 1267
+        },
+        {
+          "status": 429,
+          "ms": 1269
+        },
+        {
+          "status": 503,
+          "ms": 2170
+        }
+      ]
+    }
+  ],
+  "seconds": 45
+}

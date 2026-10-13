@@ -1,0 +1,10 @@
+{
+  "id": "E089",
+  "title": "Assistant 'My day' quick action streams a grounded practice overview",
+  "hypothesis": "It mentions the unsigned SOAP note and the demo client from the practice snapshot.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"ok\":true,\"conv\":true,\"unsigned\":true,\"noError\":true}; 4.8s; \"Here is your practice overview for today (**Monday, October 12, 2026**): ### Appointments * **Today:** None scheduled. * **Tomorrow:** Jordan Rivera (demo) at **5:00 PM** (Oct 13, 2026). ### Unsigned \"",
+  "seconds": 4.8,
+  "calls": []
+}

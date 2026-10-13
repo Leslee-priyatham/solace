@@ -1,0 +1,15 @@
+{
+  "id": "E076",
+  "title": "Transcribe real audio with the configured transcription model (gemini-3.5-transcribe), as shipped",
+  "hypothesis": "The configured model can transcribe right now; if not, the error is understandable.",
+  "status": "pass",
+  "score": 1,
+  "notes": "7 utterances",
+  "seconds": 3.5,
+  "calls": [
+    {
+      "model": "gemini-3.5-transcribe",
+      "raw": true
+    }
+  ]
+}

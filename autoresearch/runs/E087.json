@@ -1,0 +1,10 @@
+{
+  "id": "E087",
+  "title": "Session API validation: empty submission → 400, reused appointment → 409",
+  "hypothesis": "Bad requests are rejected with clear messages.",
+  "status": "pass",
+  "score": 1,
+  "notes": "empty→400 {\"error\":\"Add a recording or some text to create a note from.\"}; reused appointment→skipped (no linked appointment to test)",
+  "seconds": 12.1,
+  "calls": []
+}

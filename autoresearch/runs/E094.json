@@ -1,0 +1,10 @@
+{
+  "id": "E094",
+  "title": "Assistant conversation gets an AI-generated title",
+  "hypothesis": "After the first exchange the title becomes a 3–6 word summary (maxTokens 30).",
+  "status": "pass",
+  "score": 1,
+  "notes": "title \"Explaining Exposure Therapy Simply\"",
+  "seconds": 14.5,
+  "calls": []
+}

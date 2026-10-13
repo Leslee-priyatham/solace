@@ -1,0 +1,16 @@
+{
+  "id": "E033",
+  "title": "Chapter timestamps are valid, ordered and inside the session",
+  "hypothesis": "Chapter start times map onto the transcript so the drawer can jump to them.",
+  "status": "partial",
+  "score": 0.75,
+  "notes": "{\"numeric\":true,\"inRange\":false,\"ordered\":true,\"startsNearZero\":true} starts=[0,35,103,130,147,224,242] end=184",
+  "seconds": 5.8,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 1624
+    }
+  ]
+}

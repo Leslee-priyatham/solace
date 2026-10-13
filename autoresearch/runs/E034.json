@@ -1,0 +1,54 @@
+{
+  "id": "E034",
+  "title": "Standard progress note note from F1: every section written + planted facts recalled",
+  "hypothesis": "The Standard progress note template produces a complete note that captures the session's key facts.",
+  "status": "pass",
+  "score": 1,
+  "notes": "6 sections, 0 missing; recall 100% (missing: none); 2381 chars; 19.0s",
+  "data": {
+    "sections": [
+      {
+        "id": "presentation",
+        "title": "Presentation",
+        "html": "<p>Client presented for a 50-minute individual session, diagnosed with F41.0 Panic disorder. Client appeared engaged and cooperative, though reported a rough week involving a panic attack in public. Mood was anxious, and affect was congruent with reported distress.</p>"
+      },
+      {
+        "id": "themes",
+        "title": "Session content",
+        "html": "<p>Client discussed experiencing a panic attack at a grocery store checkout line on Tuesday, reporting physical symptoms of a pounding heart and leaving the cart to walk out.</p><p>Client reported automatic thoughts during the incident, specifically stating, &quot;I was going to pass out in front of everyone and they would think I was crazy.&quot; Client completed two out of three assigned thought records during the week. Client also reported poor sleep averaging four hours per night with early morning awakening around 3:00 AM, and noted starting a new medication prescribed by a primary care doctor two weeks ago: sertraline 50 mg, with initial mild nausea that has since resolved. Client discussed feeling dismissed by a sister's advice to &quot;just push through it.&quot;</p>"
+      },
+      {
+        "id": "interventions",
+        "title": "Interventions",
+        "html": "<ul><li>Reviewed completed thought records and evaluated belief ratings, utilizing CBT.</li><li>Conducted psychoeducation on the peak and natural decline of anxiety sensations.</li><li>Administered interoceptive exposure by having the client spin in a chair for 30 seconds to intentionally elicit dizziness and tracked anxiety ratings pre- and post-exposure, utilizing CBT.</li></ul>"
+      },
+      {
+        "id": "response",
+        "title": "Client response",
+        "html": "<p>Client responded well to reviewing thought records, recognizing a significant drop in belief regarding the thought of passing out from 90% in the moment down to 40% at home. During the interoceptive exposure exercise, client initially rated anxiety at a 6 following the spinning, and observed that the sensations decreased to a 3 within two minutes. Client gained insight that bodily sensations can peak and pass without requiring escape. Client was hesitant to invite the sister to a session at this time.</p>"
+      },
+      {
+        "id": "risk",
+        "title": "Risk assessment",
+        "html": "<p>No risk indicators were reported. Client denied any thoughts of hurting self or of not wanting to be alive.</p>"
+      },
+      {
+        "id": "plan",
+        "title": "Plan",
+        "html": "<ul><li>Complete thought records 3 times this week.</li><li>Practice the interoceptive spinning exercise once a day at home.</li><li>Conduct an in vivo exposure by returning to the grocery store on a quiet Saturday morning and staying until anxiety drops by half.</li><li>Next appointment scheduled for the same time next week.</li></ul>"
+      }
+    ],
+    "recall": {
+      "score": 1,
+      "missing": []
+    }
+  },
+  "seconds": 19,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 4251
+    }
+  ]
+}

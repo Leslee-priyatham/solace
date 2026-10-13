@@ -1,0 +1,38 @@
+{
+  "id": "E047",
+  "title": "Passive SI session (F2): risk details captured in the note",
+  "hypothesis": "Passive SI, no plan, protective factor, means, safety plan, 988 and increased frequency are all documented.",
+  "status": "pass",
+  "score": 1,
+  "notes": "recall 100%; missing none",
+  "data": [
+    {
+      "id": "subjective",
+      "title": "Subjective",
+      "html": "<p>Client reported that this week was heavy and stated, &quot;Since I lost the job three weeks ago I mostly stay in bed.&quot; Client endorsed passive suicidal ideation, stating, &quot;Some nights I think everyone would be better off without me,&quot; and &quot;It's more like wishing I could just not wake up.&quot; Client denied having a plan or intent to act, identifying their son as a protective factor.</p>"
+    },
+    {
+      "id": "objective",
+      "title": "Objective",
+      "html": "<p>Therapist observed client presenting with depressive symptoms related to recent job loss and prolonged bed rest. Assessment of suicidal ideation revealed no active intent or plan, and client confirmed no access to firearms or stockpiled medications, as their partner holds the medications.</p>"
+    },
+    {
+      "id": "assessment",
+      "title": "Assessment",
+      "html": "<p>Client presented with moderate recurrent major depressive disorder (F33.1) exacerbated by the recent loss of employment and subsequent social withdrawal. Client is experiencing passive suicidal ideation without plan or intent, mitigated by protective factors (son) and identified support systems. Risk is currently managed collaboratively through safety planning.</p>"
+    },
+    {
+      "id": "plan",
+      "title": "Plan",
+      "html": "<ul><li>Update safety plan including brother Marcus and the 988 lifeline.</li><li>Engage in one small activity each day, specifically walking the dog around the block in the morning.</li><li>Schedule an additional session for this Thursday to increase support frequency.</li></ul>"
+    }
+  ],
+  "seconds": 13.4,
+  "calls": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "status": 200,
+      "ms": 990
+    }
+  ]
+}

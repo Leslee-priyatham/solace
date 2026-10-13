@@ -1,0 +1,10 @@
+{
+  "id": "E090",
+  "title": "Assistant 'Session prep' for the demo client uses the treatment plan and measures",
+  "hypothesis": "It cites real plan objectives (Sunday-evening anxiety, thought records, 7h sleep) and GAD-7 trend.",
+  "status": "pass",
+  "score": 1,
+  "notes": "{\"sundayAnxiety\":true,\"thoughtRecords\":true,\"sleep\":true,\"gad7\":true}; 2761 chars in 15.4s",
+  "seconds": 15.5,
+  "calls": []
+}
