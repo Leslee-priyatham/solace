@@ -139,9 +139,7 @@ reach. That is a technical setup; see the [developer guide](app/README.md).
 
 The application lives in [`app/`](app) (Next.js 15, SQLite via Prisma, TypeScript). See the
 [developer guide](app/README.md) for running it in development mode, the project layout and the AI
-provider layer. [`autoresearch/`](autoresearch) holds a functional test harness in the style of
-[karpathy/autoresearch](https://github.com/karpathy/autoresearch): 115 small, scored experiments that
-exercise the real modules and HTTP API. Start with its [report](autoresearch/REPORT.md).
+provider layer.
 
 ## License
 

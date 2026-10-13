@@ -1,9 +1,0 @@
-{
-  "id": "E006",
-  "title": "Unknown model name produces a clear error",
-  "hypothesis": "A typo'd model gives a 404-style message the user can act on.",
-  "status": "pass",
-  "score": 1,
-  "notes": "AiRequestError: Google Gemini returned 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-9.9-imaginary is not found for API version v1beta, or is not supported for generateContent. Call ModelService.",
-  "seconds": 0.4
-}

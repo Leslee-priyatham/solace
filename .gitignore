@@ -1,8 +1,8 @@
 # Local-only material — never publish.
 # recon/: captures of a third-party product (its shipped code, screenshots, account pages with personal details).
 /recon/
-# Database snapshot taken before the experiments (password hash, encrypted API key).
-/autoresearch/backup/
+# Local test harness and results (not part of the app).
+/autoresearch/
 
 # Dependencies, builds, OS and editor files
 node_modules/
